@@ -1,0 +1,23 @@
+# File di sistema
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Dipendenze e output di build
+node_modules/
+dist/
+build/
+.cache/
+.parcel-cache/
+
+# File locali degli editor e degli strumenti
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Log e configurazioni locali
+*.log
+.env
+.env.*
+!.env.example
