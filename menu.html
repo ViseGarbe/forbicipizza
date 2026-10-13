@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#171713" />
+    <title>Menu | Forbici Pizza Padova</title>
+    <meta
+      name="description"
+      content="Scopri il menu di Forbici Pizza: pizza in teglia, Doppio Crunch e abbinamenti gourmet a Padova." />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Vai al contenuto</a>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="index.html" aria-label="Forbici Pizza, homepage">
+          <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <circle cx="11" cy="13" r="7" />
+            <circle cx="11" cy="35" r="7" />
+            <path d="m17 18 25 22M17 30 42 8" />
+            <circle cx="24" cy="24" r="2" />
+          </svg>
+          <span>
+            forbici
+            <small>PIZZA · PADOVA</small>
+          </span>
+        </a>
+        <button
+          class="nav-toggle"
+          aria-expanded="false"
+          aria-controls="navigation"
+          aria-label="Apri menu">
+          <span></span>
+          <span></span>
+        </button>
+        <nav id="navigation" aria-label="Navigazione principale">
+          <a href="index.html">Home</a>
+          <a href="menu.html" aria-current="page">Menu</a>
+          <a href="contatti.html">Chi siamo / Contatti</a>
+          <a
+            class="button small"
+            href="https://www.google.com/maps/reserve/v/dine/c/_NIUWXSTlwU?source=pa"
+            target="_blank"
+            rel="noopener noreferrer">
+            Prenota un tavolo
+            <span aria-hidden="true">↗</span>
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="page-intro container menu-page-intro">
+        <span class="eyebrow">IL MENU DI FORBICI</span>
+        <div class="intro-grid">
+          <h1>
+            Scorri. Scegli.
+            <br />
+            <em>Fai crunch.</em>
+          </h1>
+          <p>
+            Una pizza alla volta, come nel nostro banco: guarda, scegli il tuo
+            gusto, poi ordinalo.
+          </p>
+        </div>
+      </section>
+
+      <section class="slider-section" aria-label="Scopri il menu per categorie">
+        <div class="container slider-shell" data-menu-slider>
+          <div class="slider-meta">
+            <span class="eyebrow">SFOGLIA LE NOSTRE SCELTE</span>
+            <p>Usa le frecce o scorri con un dito.</p>
+            <div class="slider-controls">
+              <button
+                type="button"
+                class="slider-arrow"
+                data-slider-prev
+                aria-label="Mostra la categoria precedente">
+                ←
+              </button>
+              <button
+                type="button"
+                class="slider-arrow"
+                data-slider-next
+                aria-label="Mostra la categoria successiva">
+                →
+              </button>
+            </div>
+          </div>
+
+          <div
+            id="menu-slider-stage"
+            class="menu-slider-stage"
+            role="region"
+            aria-roledescription="carosello"
+            aria-label="Categorie del menu">
+            <article
+              class="menu-slide is-active"
+              data-slide="0"
+              aria-hidden="false"
+              data-name="Forbici Gourmet">
+              <div class="slide-copy">
+                <span class="slide-kicker">01 — FORBICI GOURMET</span>
+                <h2>
+                  Il doppio
+                  <br />
+                  <em>del crunch.</em>
+                </h2>
+                <p>
+                  Due strati di pizza, farciture pensate per sorprendere e un
+                  morso che non passa inosservato.
+                </p>
+                <div class="slide-notes">
+                  <span>pulled pork</span>
+                  <span>zucca</span>
+                  <span>cipolla caramellata</span>
+                </div>
+                <a class="slider-link" href="#gourmet">
+                  Vedi le Gourmet
+                  <span aria-hidden="true">↘</span>
+                </a>
+              </div>
+              <figure class="slide-visual">
+                <span class="ingredient ingredient-one">✦</span>
+                <span class="ingredient ingredient-two">●</span>
+                <span class="ingredient ingredient-three">✦</span>
+                <img
+                  src="assets/pulled-pork.jpg"
+                  alt="Doppio Crunch farcito con pulled pork di Forbici Pizza"
+                  width="800"
+                  height="800" />
+                <figcaption>DOPPIO CRUNCH</figcaption>
+              </figure>
+              <span class="slide-number" aria-hidden="true">
+                01
+                <i>/</i>
+                04
+              </span>
+            </article>
+
+            <article
+              class="menu-slide"
+              data-slide="1"
+              aria-hidden="true"
+              data-name="Forbicicrunch rosse">
+              <div class="slide-copy">
+                <span class="slide-kicker">02 — FORBICICRUNCH ROSSE</span>
+                <h2>
+                  Il classico,
+                  <br />
+                  <em>ma con carattere.</em>
+                </h2>
+                <p>
+                  Pomodoro, impasto croccante e le combinazioni che non hanno
+                  bisogno di presentazioni.
+                </p>
+                <div class="slide-notes">
+                  <span>pomodoro</span>
+                  <span>bufala</span>
+                  <span>basilico</span>
+                </div>
+                <a class="slider-link" href="#rosse">
+                  Vedi le rosse
+                  <span aria-hidden="true">↘</span>
+                </a>
+              </div>
+              <figure class="slide-visual">
+                <span class="ingredient ingredient-one">●</span>
+                <span class="ingredient ingredient-two">✦</span>
+                <span class="ingredient ingredient-three">●</span>
+                <img
+                  src="assets/bufala.jpg"
+                  alt="Pizza rossa con mozzarella e basilico dal menu Forbici"
+                  width="800"
+                  height="800" />
+                <figcaption>ROSSA, SEMPRE</figcaption>
+              </figure>
+              <span class="slide-number" aria-hidden="true">
+                02
+                <i>/</i>
+                04
+              </span>
+            </article>
+
+            <article
+              class="menu-slide"
+              data-slide="2"
+              aria-hidden="true"
+              data-name="Le speciali">
+              <div class="slide-copy">
+                <span class="slide-kicker">03 — PATATE &amp; MELANZANE</span>
+                <h2>
+                  Fuori dal
+                  <br />
+                  <em>solito giro.</em>
+                </h2>
+                <p>
+                  Ingredienti decisi, combinazioni curiose e una scusa perfetta
+                  per cambiare gusto ogni volta.
+                </p>
+                <div class="slide-notes">
+                  <span>cicoria</span>
+                  <span>pancetta</span>
+                  <span>gorgonzola</span>
+                </div>
+                <a class="slider-link" href="#speciali">
+                  Vedi le speciali
+                  <span aria-hidden="true">↘</span>
+                </a>
+              </div>
+              <figure class="slide-visual">
+                <span class="ingredient ingredient-one">✦</span>
+                <span class="ingredient ingredient-two">●</span>
+                <span class="ingredient ingredient-three">✦</span>
+                <img
+                  src="assets/cicoria.jpg"
+                  alt="Pizza in teglia con cicoria e pancetta di Forbici Pizza"
+                  width="800"
+                  height="800" />
+                <figcaption>DA SCOPRIRE</figcaption>
+              </figure>
+              <span class="slide-number" aria-hidden="true">
+                03
+                <i>/</i>
+                04
+              </span>
+            </article>
+
+            <article
+              class="menu-slide"
+              data-slide="3"
+              aria-hidden="true"
+              data-name="Il banco di Forbici">
+              <div class="slide-copy">
+                <span class="slide-kicker">04 — PIZZA IN TEGLIA</span>
+                <h2>
+                  Un taglio.
+                  <br />
+                  <em>Tante possibilità.</em>
+                </h2>
+                <p>
+                  Dal banco al tavolo, dalla pausa pranzo all’ordine a casa:
+                  trova il tuo prossimo morso.
+                </p>
+                <div class="slide-notes">
+                  <span>teglia</span>
+                  <span>farciture</span>
+                  <span>condivisione</span>
+                </div>
+                <a class="slider-link" href="#tutto-menu">
+                  Scorri tutto il menu
+                  <span aria-hidden="true">↘</span>
+                </a>
+              </div>
+              <figure class="slide-visual slide-visual-wide">
+                <span class="ingredient ingredient-one">●</span>
+                <span class="ingredient ingredient-two">✦</span>
+                <span class="ingredient ingredient-three">●</span>
+                <img
+                  src="assets/hero.jpg"
+                  alt="Pizza in teglia al banco di Forbici Pizza"
+                  width="1920"
+                  height="1080" />
+                <figcaption>FORBICI PIZZA</figcaption>
+              </figure>
+              <span class="slide-number" aria-hidden="true">
+                04
+                <i>/</i>
+                04
+              </span>
+            </article>
+          </div>
+          <p class="sr-only" aria-live="polite" data-slider-status>
+            Categoria 1 di 4: Forbici Gourmet
+          </p>
+        </div>
+      </section>
+
+      <section id="tutto-menu" class="container menu-content">
+        <div class="menu-list-heading">
+          <div>
+            <span class="eyebrow">MENU COMPLETO</span>
+          </div>
+        </div>
+        <div class="filters" role="group" aria-label="Filtra il menu">
+          <button class="filter active" data-filter="all" aria-pressed="true">
+            Tutto
+          </button>
+          <button class="filter" data-filter="gourmet" aria-pressed="false">
+            Gourmet
+          </button>
+          <button class="filter" data-filter="rosse" aria-pressed="false">
+            Rosse
+          </button>
+          <button class="filter" data-filter="bianche" aria-pressed="false">
+            Bianche
+          </button>
+          <button class="filter" data-filter="speciali" aria-pressed="false">
+            Speciali
+          </button>
+          <button class="filter" data-filter="insalate" aria-pressed="false">
+            Insalate
+          </button>
+          <button class="filter" data-filter="bevande" aria-pressed="false">
+            Bevande
+          </button>
+        </div>
+        <p id="filter-status" class="sr-only" aria-live="polite"></p>
+
+        <section id="gourmet" class="menu-category" data-category="gourmet">
+          <div class="category-heading">
+            <span class="number">01</span>
+            <h2>Forbici Gourmet</h2>
+            <p>Il nostro Doppio Crunch farcito.</p>
+          </div>
+          <div class="menu-items">
+            <div class="menu-item">
+              <div>
+                <h3>Pulled pork</h3>
+                <p>Maiale sfilacciato, crema di zucca e cipolla caramellata</p>
+              </div>
+              <span class="price">€ 12,00</span>
+            </div>
+            <div class="menu-item">
+              <div>
+                <h3>La Montanara</h3>
+                <p>Radicchio, speck, gorgonzola e noci</p>
+              </div>
+              <span class="price">€ 10,00</span>
+            </div>
+          </div>
+        </section>
+        <section id="rosse" class="menu-category" data-category="rosse">
+          <div class="category-heading">
+            <span class="number">02</span>
+            <h2>Forbicicrunch rosse</h2>
+            <p>La base rossa, in tutte le sue sfumature.</p>
+          </div>
+          <div class="menu-items">
+            <div class="menu-item">
+              <div>
+                <h3>Margherita</h3>
+                <p>Due tranci</p>
+              </div>
+              <span class="price">€ 8,00</span>
+            </div>
+            <div class="menu-item">
+              <div>
+                <h3>Bufala</h3>
+                <p>Due tranci</p>
+              </div>
+              <span class="price">€ 8,00</span>
+            </div>
+            <div class="menu-item">
+              <div>
+                <h3>Parmigiana</h3>
+                <p>Due tranci</p>
+              </div>
+              <span class="price">€ 10,00</span>
+            </div>
+            <div class="menu-item">
+              <div>
+                <h3>Diavola</h3>
+                <p>Due tranci</p>
+              </div>
+              <span class="price">€ 9,00</span>
+            </div>
+            <div class="menu-item">
+              <div>
+                <h3>Cicoria e pomodori secchi</h3>
+                <p>Due tranci</p>
+              </div>
+              <span class="price">€ 9,00</span>
+            </div>
+          </div>
+        </section>
+        <section id="bianche" class="menu-category" data-category="bianche">
+          <div class="category-heading">
+            <span class="number">03</span>
+            <h2>Forbicicrunch bianche</h2>
+            <p>Abbinamenti da assaporare.</p>
+          </div>
+          <div class="menu-items">
+            <div class="menu-item">
+              <div><h3>Burrata e alici del Cantabrico</h3></div>
+              <span class="price">€ 10,00</span>
+            </div>
+            <div class="menu-item">
+              <div>
+                <h3>Zucca, porcini e pancetta</h3>
+                <p>Con fior di latte</p>
+              </div>
+              <span class="price">€ 10,00</span>
+            </div>
+          </div>
+        </section>
+        <section id="speciali" class="menu-category" data-category="speciali">
+          <div class="category-heading">
+            <span class="number">04</span>
+            <h2>Patate &amp; melanzane</h2>
+            <p>Un altro modo di dire crunch.</p>
+          </div>
+          <div class="menu-items">
+            <div class="menu-item">
+              <div>
+                <h3>Carbonara</h3>
+                <p>Due tranci</p>
+              </div>
+              <span class="price">€ 10,00</span>
+            </div>
+            <div class="menu-item">
+              <div>
+                <h3>Patate e crema di tartufo</h3>
+                <p>Due tranci</p>
+              </div>
+              <span class="price">€ 10,00</span>
+            </div>
+            <div class="menu-item">
+              <div>
+                <h3>Ricotta, mortadella e pistacchi</h3>
+                <p>Due tranci</p>
+              </div>
+              <span class="price">€ 10,00</span>
+            </div>
+          </div>
+        </section>
+        <section id="insalate" class="menu-category" data-category="insalate">
+          <div class="category-heading">
+            <span class="number">05</span>
+            <h2>Insalate</h2>
+            <p>Accompagnate dal crunch caldo.</p>
+          </div>
+          <div class="menu-items">
+            <div class="menu-item">
+              <div>
+                <h3>Insalata bufala</h3>
+                <p>Insalata, pomodorini, olive e bufala</p>
+              </div>
+              <span class="price">€ 10,00</span>
+            </div>
+            <div class="menu-item">
+              <div>
+                <h3>Caesar salad</h3>
+                <p>Insalata, crostini, pollo e salsa Caesar</p>
+              </div>
+              <span class="price">€ 11,00</span>
+            </div>
+          </div>
+        </section>
+        <section id="bevande" class="menu-category" data-category="bevande">
+          <div class="category-heading">
+            <span class="number">06</span>
+            <h2>Da bere</h2>
+            <p>Acqua e bibite per accompagnare la tua scelta.</p>
+          </div>
+          <div class="menu-items">
+            <div class="menu-item">
+              <div>
+                <h3>Acqua naturale / frizzante</h3>
+                <p>50 cl</p>
+              </div>
+              <span class="price">€ 1,50</span>
+            </div>
+            <div class="menu-item">
+              <div>
+                <h3>Coca-Cola / Coca-Cola Zero</h3>
+                <p>33 cl</p>
+              </div>
+              <span class="price">€ 4,00</span>
+            </div>
+            <div class="menu-item">
+              <div>
+                <h3>Fanta / Chinotto Polara</h3>
+                <p>33 cl</p>
+              </div>
+              <span class="price">€ 4,00</span>
+            </div>
+            <div class="menu-item">
+              <div>
+                <h3>Tè limone / pesca</h3>
+                <p>33 cl</p>
+              </div>
+              <span class="price">€ 3,50</span>
+            </div>
+          </div>
+        </section>
+        <p class="allergen-note">
+          Allergie o intolleranze? Consulta la pagina con tutti gli allergeni e
+          chiedi conferma al personale prima di ordinare.
+          <a class="text-link" href="allergeni.html">Tutti gli allergeni ↗</a>
+        </p>
+      </section>
+
+      <section class="cta-band">
+        <div class="container">
+          <div>
+            <span class="eyebrow">SCELTO IL TUO PREFERITO?</span>
+            <h2>
+              Ora manca solo
+              <br />
+              il primo morso.
+            </h2>
+          </div>
+          <a class="button light" href="contatti.html#ordina" data-open-order>
+            Ordina ora ↗
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-top">
+        <a class="brand" href="index.html">
+          <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <circle cx="11" cy="13" r="7" />
+            <circle cx="11" cy="35" r="7" />
+            <path d="m17 18 25 22M17 30 42 8" />
+            <circle cx="24" cy="24" r="2" />
+          </svg>
+          <span>
+            forbici
+            <small>PIZZA · PADOVA</small>
+          </span>
+        </a>
+        <p>
+          Il prossimo crunch?
+          <br />
+          Ci vediamo in centro.
+        </p>
+        <div>
+          <a
+            href="https://www.google.com/maps/search/?api=1&amp;query=Forbici+Pizza+Via+San+Francesco+28+Padova"
+            target="_blank"
+            rel="noopener noreferrer">
+            Via San Francesco, 28 · Padova ↗
+          </a>
+          <a href="tel:+390499566127">049 956 6127</a>
+          <a
+            href="https://www.instagram.com/forbicipizza/"
+            target="_blank"
+            rel="noopener noreferrer">
+            Instagram ↗
+          </a>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <span>Forbici Pizza · Padova</span>
+        <div>
+          <a
+            href="https://glovoapp.com/en/it/padova/stores/forbici-pizza-crunch-pad"
+            target="_blank"
+            rel="noopener noreferrer">
+            Glovo ↗
+          </a>
+          <a
+            href="https://deliveroo.it/it/menu/padova/centro/forbici-pizza-crunch-padova"
+            target="_blank"
+            rel="noopener noreferrer">
+            Deliveroo ↗
+          </a>
+          <a
+            href="https://www.google.com/maps/reserve/v/dine/c/_NIUWXSTlwU?source=pa"
+            target="_blank"
+            rel="noopener noreferrer">
+            Prenota ↗
+          </a>
+        </div>
+      </div>
+    </footer>
+    <div class="mobile-actions">
+      <a
+        href="https://www.google.com/maps/reserve/v/dine/c/_NIUWXSTlwU?source=pa"
+        target="_blank"
+        rel="noopener noreferrer">
+        Prenota un tavolo ↗
+      </a>
+      <a href="contatti.html#ordina" data-open-order>Ordina ora ↗</a>
+    </div>
+    <dialog id="order-dialog" aria-labelledby="order-title">
+      <div class="dialog-top">
+        <span class="eyebrow">A CASA TUA O DA ASPORTO</span>
+        <button class="close-dialog" aria-label="Chiudi finestra">×</button>
+      </div>
+      <h2 id="order-title">
+        Un crunch,
+        <br />
+        dove vuoi.
+      </h2>
+      <p>Scegli come ordinare.</p>
+      <a
+        class="delivery-link"
+        href="https://glovoapp.com/en/it/padova/stores/forbici-pizza-crunch-pad"
+        target="_blank"
+        rel="noopener noreferrer">
+        <span>
+          Glovo
+          <small>Consegna a domicilio</small>
+        </span>
+        <span aria-hidden="true">↗</span>
+      </a>
+      <a
+        class="delivery-link"
+        href="https://deliveroo.it/it/menu/padova/centro/forbici-pizza-crunch-padova"
+        target="_blank"
+        rel="noopener noreferrer">
+        <span>
+          Deliveroo
+          <small>Consegna a domicilio</small>
+        </span>
+        <span aria-hidden="true">↗</span>
+      </a>
+      <a class="delivery-link" href="tel:+390499566127">
+        <span>
+          049 956 6127
+          <small>Chiama per ordinare e concordare il ritiro</small>
+        </span>
+        <span aria-hidden="true">↗</span>
+      </a>
+      <p class="fineprint">
+        Disponibilità, prezzi e zone di consegna sono indicati sulla piattaforma
+        scelta.
+      </p>
+    </dialog>
+  </body>
+</html>
