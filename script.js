@@ -22,6 +22,63 @@ document.addEventListener("keydown", (event) => {
 document.addEventListener("click", (event) => {
   if (!event.target.closest(".site-header")) closeNavigation();
 });
+// A short scissor-cut wipe connects pages selected from the mobile dropdown.
+const reducedPageMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+const pageCutKey = "forbici-page-cut";
+let pageCutActive = false;
+function createPageCut(phase) {
+  document.querySelector(".page-cut")?.remove();
+  const cover = document.createElement("div");
+  cover.className = `page-cut ${phase}`;
+  cover.setAttribute("aria-hidden", "true");
+  cover.innerHTML = '<svg viewBox="0 0 48 48" fill="none"><circle cx="11" cy="13" r="7"/><circle cx="11" cy="35" r="7"/><path class="cut-blade-top" d="m17 18 25 22"/><path class="cut-blade-bottom" d="m17 30 25-22"/><circle cx="24" cy="24" r="2"/></svg>';
+  document.body.append(cover);
+  return cover;
+}
+try {
+  const arrival = JSON.parse(sessionStorage.getItem(pageCutKey) || "null");
+  sessionStorage.removeItem(pageCutKey);
+  if (arrival && arrival.path === location.pathname && Date.now() - arrival.time < 10000 && !reducedPageMotion.matches) {
+    const cover = createPageCut("is-revealing");
+    cover.addEventListener("animationend", (event) => {
+      if (event.target === cover) cover.remove();
+    });
+    setTimeout(() => cover.remove(), 700);
+  }
+} catch { /* Navigation also works when session storage is unavailable. */ }
+navigation.querySelectorAll("a").forEach((link) => {
+  link.addEventListener("click", (event) => {
+    const wasOpen = navigation.classList.contains("open");
+    closeNavigation();
+    const destination = new URL(link.href, location.href);
+    if (!wasOpen || reducedPageMotion.matches || event.defaultPrevented || event.button !== 0 ||
+        event.ctrlKey || event.metaKey || event.shiftKey || event.altKey ||
+        (link.target && link.target !== "_self") || destination.origin !== location.origin ||
+        destination.pathname === location.pathname || !destination.pathname.endsWith(".html")) return;
+    event.preventDefault();
+    if (pageCutActive) return;
+    pageCutActive = true;
+    createPageCut("is-covering");
+    setTimeout(() => {
+      try {
+        sessionStorage.setItem(pageCutKey, JSON.stringify({ path: destination.pathname, time: Date.now() }));
+      } catch { /* The exit animation does not depend on storage. */ }
+      window.location.assign(destination.href);
+    }, 300);
+    // Restore the current page if navigation fails or is cancelled.
+    setTimeout(() => {
+      document.querySelector(".page-cut")?.remove();
+      pageCutActive = false;
+    }, 1800);
+  });
+});
+window.addEventListener("pageshow", (event) => {
+  if (event.persisted) {
+    document.querySelector(".page-cut")?.remove();
+    pageCutActive = false;
+    closeNavigation();
+  }
+});
 window
   .matchMedia("(min-width: 781px)")
   .addEventListener("change", closeNavigation);
@@ -117,6 +174,7 @@ if (slider) {
   const previous = slider.querySelector("[data-slider-prev]");
   const next = slider.querySelector("[data-slider-next]");
   const sliderStatus = slider.querySelector("[data-slider-status]");
+  const slideSelectors = slider.querySelectorAll("[data-slider-go]");
   let activeSlide = 0;
   let pointerStart = null;
   const setSlide = (index) => {
@@ -127,8 +185,14 @@ if (slider) {
       slide.setAttribute("aria-hidden", String(!active));
       slide.inert = !active;
     });
+    slideSelectors.forEach((button, current) => {
+      button.setAttribute("aria-pressed", String(current === activeSlide));
+    });
     sliderStatus.textContent = `Categoria ${activeSlide + 1} di ${slides.length}: ${slides[activeSlide].dataset.name}`;
   };
+  slideSelectors.forEach((button) => {
+    button.addEventListener("click", () => setSlide(Number(button.dataset.sliderGo)));
+  });
   previous.addEventListener("click", () => setSlide(activeSlide - 1));
   next.addEventListener("click", () => setSlide(activeSlide + 1));
   slider.addEventListener("keydown", (event) => {
@@ -144,17 +208,25 @@ if (slider) {
     }
   });
   slider.addEventListener("pointerdown", (event) => {
-    pointerStart = event.clientX;
+    if (!event.isPrimary || event.target.closest("a, button")) return;
+    pointerStart = { x: event.clientX, y: event.clientY };
   });
   slider.addEventListener("pointerup", (event) => {
     if (pointerStart === null) return;
-    const movement = event.clientX - pointerStart;
-    if (Math.abs(movement) > 45)
+    const movement = event.clientX - pointerStart.x;
+    const verticalMovement = event.clientY - pointerStart.y;
+    if (Math.abs(movement) > 45 && Math.abs(movement) > Math.abs(verticalMovement))
       setSlide(activeSlide + (movement < 0 ? 1 : -1));
     pointerStart = null;
   });
   slider.addEventListener("pointercancel", () => {
     pointerStart = null;
+  });
+  slider.querySelectorAll(".slider-link").forEach((link) => {
+    link.addEventListener("click", () => {
+      const category = link.hash.slice(1);
+      filterMenu(category === "tutto-menu" ? "all" : category);
+    });
   });
   setSlide(0);
 }
@@ -170,3 +242,56 @@ loadMap?.addEventListener("click", () => {
   frame.setAttribute("allowfullscreen", "");
   document.getElementById("map-container").replaceWith(frame);
 });
+
+// The entire ticker toggles scrolling, using native button keyboard support.
+const ribbon = document.querySelector(".ribbon");
+ribbon?.addEventListener("click", () => {
+  const paused = ribbon.classList.toggle("is-paused");
+  ribbon.setAttribute("aria-pressed", String(paused));
+  ribbon.setAttribute("aria-label", `Pizza in teglia, Doppio Crunch, fatta per condividere, Via San Francesco 28. ${paused ? "Riprendi" : "Metti in pausa"} lo scorrimento`);
+});
+
+// Hide on downward scroll; restore on upward scroll or after one idle second.
+const mobileActions = document.querySelector(".mobile-actions");
+if (mobileActions) {
+  const mobileViewport = window.matchMedia("(max-width: 780px)");
+  const scrollPosition = () => Math.max(0, Math.min(window.scrollY,
+    document.documentElement.scrollHeight - window.innerHeight));
+  let lastActionScroll = scrollPosition();
+  let scrollFramePending = false;
+  let actionIdleTimer;
+  const updateMobileActions = () => {
+    const currentScroll = scrollPosition();
+    const movement = currentScroll - lastActionScroll;
+    if (!mobileViewport.matches || currentScroll <= 48 ||
+        (mobileActions.contains(document.activeElement) && document.activeElement.matches(":focus-visible"))) {
+      mobileActions.classList.remove("is-scroll-hidden");
+      lastActionScroll = currentScroll;
+    } else if (Math.abs(movement) >= 8) {
+      mobileActions.classList.toggle("is-scroll-hidden", movement > 0);
+      lastActionScroll = currentScroll;
+    }
+    scrollFramePending = false;
+  };
+  window.addEventListener("scroll", () => {
+    clearTimeout(actionIdleTimer);
+    if (mobileViewport.matches) {
+      actionIdleTimer = setTimeout(() => {
+        mobileActions.classList.remove("is-scroll-hidden");
+        lastActionScroll = scrollPosition();
+      }, 1000);
+    }
+    if (!scrollFramePending) {
+      scrollFramePending = true;
+      window.requestAnimationFrame(updateMobileActions);
+    }
+  }, { passive: true });
+  mobileViewport.addEventListener("change", () => {
+    clearTimeout(actionIdleTimer);
+    mobileActions.classList.remove("is-scroll-hidden");
+    lastActionScroll = scrollPosition();
+  });
+  mobileActions.addEventListener("focusin", () => {
+    mobileActions.classList.remove("is-scroll-hidden");
+  });
+}

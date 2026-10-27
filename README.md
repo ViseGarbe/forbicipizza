@@ -7,9 +7,26 @@ consegna esterni.
 
 ## Identità e contenuti
 
-Il sito adotta una direzione visiva editoriale e informale, costruita attorno
-al concetto di “crunch”: tipografia serif per i titoli, palette crema e rossa,
-fotografie dei prodotti e componenti grafici ispirati al simbolo delle forbici.
+Il restyling prende spunto dalle fotografie del locale in Via San Francesco,
+28: legno, pannelli scuri, piatti decorati e dettagli verdi. La palette
+combina carbone, crema e verde salvia, con bottoni color noce ispirati al legno
+degli arredi. Titoli serif,
+fotografie ampie e sezioni editoriali accompagnano il visitatore dal banco
+alla scelta del menu e alla prenotazione.
+
+Il carosello del menu si integra nello sfondo crema con un pannello salvia
+chiaro, fotografie dagli angoli morbidi, titoli grandi e indicatori cliccabili.
+Si naviga con i pulsanti, la tastiera o lo scorrimento orizzontale.
+La homepage usa un’apertura crema continua con la navigazione, una foto ampia
+con un fondale salvia e un titolo compatto. Su mobile la foto precede testo e
+azioni, per mostrare subito il prodotto. I contatti e la pagina allergeni
+condividono la stessa identità.
+Le freccette decorative diagonali sono state rimosse; restano i comandi
+funzionali del carosello.
+
+Foto della sala e dell’ingresso e note sui riferimenti visivi sono documentate
+in [`assets/SOURCES.md`](assets/SOURCES.md). Le immagini sono salvate localmente,
+senza richieste a siti esterni durante il caricamento delle pagine.
 
 Le pagine principali sono:
 
@@ -35,7 +52,7 @@ animazioni.
 - `script.js` gestisce la navigazione mobile, la finestra per gli ordini, i
   filtri del menu, il carosello delle categorie e il caricamento esplicito
   della mappa.
-- `assets/` contiene le fotografie del menu e la favicon del locale.
+- `assets/` contiene le fotografie dei prodotti e del locale, favicon e fonti del restyling.
 
 ## Servizi collegati
 
@@ -57,3 +74,20 @@ locale e possono variare. Le descrizioni dei prodotti non sostituiscono la
 verifica degli ingredienti, degli allergeni o delle possibili contaminazioni
 incrociate; per esigenze specifiche è necessario chiedere conferma al
 personale.
+
+## Verifica locale
+
+Non serve una compilazione. Apri `index.html` oppure avvia un server statico:
+
+```sh
+python3 -m http.server 8000
+```
+
+Visita `http://localhost:8000`. Controlla le quattro pagine su desktop e mobile,
+la navigazione, i filtri, il carosello, la finestra degli ordini e il caricamento
+della mappa su richiesta. Per la sintassi JavaScript: `node --check script.js`.
+
+La palette delle superfici alterna crema, sabbia e salvia chiarissimo. Le
+sezioni dedicate a prenotazione e consegna usano un fondo salvia leggero;
+il piè di pagina condiviso usa salvia polveroso con testo scuro, per una
+chiusura più morbida su tutte le pagine.
